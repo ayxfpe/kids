@@ -1,3 +1,4 @@
+
 # Development Tools #
 
 *Install via Admin*
@@ -20,4 +21,3 @@ ssh-keygen -> git config --user.name "xxx" -> git config --user.email "x@y.z" ->
 
 ## Voice Access ##
 settings -> voice access on -> shift + ctrl + c to use.
-

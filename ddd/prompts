@@ -1,0 +1,16 @@
+
+create a project desc in desc file for a diary project in the ddd folder. 
+It has a homepage page consisting of 4 sections: 
+    Sticky Diaries, 
+    Chronicle Diaries, 
+    Tagged Diaries, 
+    Search Window.
+
+Sticky Diaries:
+    This section displays the most recent diary entries, acting as a sticky note.
+    Users can click on these entries to view more details or edit them.
+
+Chronicle Diaries:
+    This section shows a chronological list of all diary entries.
+    Users can click on any entry to view it in detail.
+    

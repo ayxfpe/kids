@@ -1,0 +1,51 @@
+# AI-Assisted Diary Project
+
+## Project Objective
+Develop an AI-assisted diary system using markdown files, providing an organized and intelligent way to manage personal entries.
+
+## Project Framework
+- Markdown files for content storage
+- Python for backend processing
+- Natural Language Processing (NLP) for automated parsing and tagging
+
+## Project Structure
+1. Homepage (index.md)
+2. Individual teaching diary entries (lcx-YYYY-MM-DD.md)
+3. Individual student diary entries (ayx-YYYY-MM-DD.md) and (azx-YYYY-MM-DD.md)
+3. Python scripts for file management and AI processing
+4. a concept tree file that mimic the tech tree of the polytopia game, easily editable to include or exclude new concepts based on teaching progress.
+5. a concept tree figure that renders the concept tree file as the tech tree of the polytopia game, with the current teaching progress.
+
+## Homepage Layout
+The homepage (index.md) will consist of the following sections:
+1. Sticky Diaries: Important or frequently accessed entries
+2. Chronicle Diaries: Recent entries listed chronologically
+3. Teaching Progress: The rendered concept tree figure, with the current teaching progress (blue taught, green untaught).
+4. Search Window: Interface for searching diary contents
+
+## Core Features
+1. Automated Entry Processing
+2. Intelligent Tagging
+3. Smart Search
+4. Sticky Entries
+5. Chronological View
+
+## User Interaction
+1. Creating an Entry
+2. Viewing Entries
+3. Searching
+
+## Technical Implementation
+1. File Monitoring
+2. AI Processing
+3. Homepage Generation
+4. Search Functionality
+
+## Future Enhancements
+1. Web interface for easier interaction and mobile accessibility
+2. Data visualization of diary trends and sentiments over time
+3. Integration with external APIs for weather, location, or activity data
+4. Customizable AI models for personalized content analysis and tagging
+
+## File and Folder Structure
+

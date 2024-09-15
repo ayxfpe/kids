@@ -1,0 +1,34 @@
+# Cursor Programming
+
+- Cursor
+  - AI
+    - AI coding
+      - Claude
+    - AI writing
+      - ChatGPT
+    - AI q&a 
+  - GitHub
+    - Code Share
+      - Git Bash
+  - Python
+    - Numpy
+    - Conda
+    - Pynotebook
+  - Docs
+    - Diary
+    - Website
+      - Publish
+  - Apps
+    - Web App
+     - Vercel
+     - Replit
+    - Desktop App
+      - Pygame
+    - Mobile App
+     - Flutter
+     - Android Studio
+  - Arts
+    - AI arts
+      - AI drawing
+      - AI music
+
