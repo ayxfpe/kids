@@ -1,4 +1,4 @@
-OK, I want to create a new game. which is a. So again, 2048.
-okay. Game panel.,
-    There is a play board. The play board is 4 by 4 grade. Each grade is a tile.
-Game control.
+If you want to create a new game, please first create game description file with the following prompts:
+ai> I want to create a new game. which is a. So again, 2048. please create game description in @desc file
+Then you ask the AI to create the game according to the description.
+ai> Apply @desc and create the game in @2048/

@@ -1,6 +1,6 @@
-Step 1
-    I want to create a checkers game in pygame, 
-    please provide me a game developmen description of the game and the rules of the game.
+Step 1:
+    -I want to create a checkers game in pygame, 
+    -please provide me a game developmen description of the game and the rules of the game.
 
-Step 2. 
-    please make the checker game in @checkers/ based on the @checkers/desc.txt file.
+Step 2:
+    -please make the checker game in @checkers/ based on the @checkers/desc.txt file.

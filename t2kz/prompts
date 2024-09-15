@@ -1,15 +1,13 @@
 Project Objective: 
-    make a novel type to kill zombie graphic game to be published as a android app
+    -make a novel type to kill zombie graphic game to be published as a android app
 Game Outlay: 
-    panels: arena, control, zombie, player, score, timer
-    arena panel: make a large odd by odd square grid, player in the middle, zombies moving
-    control panel: three toggle buttons to enalbe/disable the qwerty, asdf and zxcv row letter buttons
-    restar button: 
-    quit button: 
-    timer: 2min
+    -panels: arena, control, zombie, player, score, timer
+    -arena panel: make a large odd by odd square grid, player in the middle, zombies moving
+    -control panel: three toggle buttons to enalbe/disable the qwerty, asdf and zxcv row letter buttons
+    -restart button: 
+    -quit button: 
+    -timer: 2min
 Game Controls/Rules:
-    zombie randomly appear and approaches the player at a slow random walk.
-    game over if palyer touched by any zombie.
-    each zombie labeled by a random key as selected from enabled keyboard row
-
-
+    -zombie randomly appear and approaches the player at a slow random walk.
+    -game over if palyer touched by any zombie.
+    -each zombie labeled by a random key as selected from enabled keyboard row

@@ -1,29 +1,29 @@
 Project Objective: 
-    make a novel mk24 graphic game to be published as a android app
+    -make a novel mk24 graphic game to be published as a android app
 Game Outlay: 
-    panels: card, control, solution; buttons: submit, redraw; timer: 1min
-    card panel: 4 random poker cards from 1 to 10
-    control panel: + - * / ( ) ! ^ ? symbols
-    formula panel: display the formula as the user click on the cards or the symbols
-    clear button: clear the formula
-    submit button: evaluate the formula and a solution is valid only if the equation equals to 24
-    redraw button: redraw four random poker cards from 1 to 10
-    reveal button: 
-    timer: 2min
-    toggle button: toggle to enable or disable the ! and ^ symbols
+    -panels: card, control, solution; buttons: submit, redraw; timer: 1min
+    -card panel: 4 random poker cards from 1 to 10
+    -control panel: + - * / ( ) ! ^ ? symbols
+    -formula panel: display the formula as the user click on the cards or the symbols
+    -clear button: clear the formula
+    -submit button: evaluate the formula and a solution is valid only if the equation equals to 24
+    -redraw button: redraw four random poker cards from 1 to 10
+    -reveal button: 
+    -timer: 2min
+    -toggle button: toggle to enable or disable the ! and ^ symbols
 Game Controls/Rules:
-    the formula prompt will display the formula as the user click on the cards or the symbols. 
-    each card is linked to its number and needs to be used exactly one. 
-    each symbol can be used as needed times but the formula shall be mathematically correct. 
-    submit button if clicked will evaluate the formula
-    clear button if clicked will clear the formula
-    redraw button if clicked will redraw four random poker cards from 1 to 10.
-    reveal button: to show correct formula if exist or report unsolvable
-    a solution formula is valid only if the equation equals to 24 or it was ? and there is no solution.
-    if valid flash green correct and automatically redraw cards for a new game.
-    if invalid flash red wrong and keep the formula, prompt user to try again or redraw cards for a new game.
-    ! means factorial, ^ means power, ^precedes!, and ! preceds *, / in the order of operations
+    -the formula prompt will display the formula as the user click on the cards or the symbols. 
+    -each card is linked to its number and needs to be used exactly one. 
+    -each symbol can be used as needed times but the formula shall be mathematically correct. 
+    -submit button if clicked will evaluate the formula
+    -clear button if clicked will clear the formula
+    -redraw button if clicked will redraw four random poker cards from 1 to 10.
+    -reveal button: to show correct formula if exist or report unsolvable
+    -a solution formula is valid only if the equation equals to 24 or it was ? and there is no solution.
+    -if valid flash green correct and automatically redraw cards for a new game.
+    -if invalid flash red wrong and keep the formula, prompt user to try again or redraw cards for a new game.
+    -! means factorial, ^ means power, ^precedes!, and ! preceds *, / in the order of operations
 Game Algorihtms:
-    implment a graph search algoirhtm of symbol combinations to find the solution and report no solution if not vailable.
+    -implment a graph search algoirhtm of symbol combinations to find the solution and report no solution if not vailable.
 
 

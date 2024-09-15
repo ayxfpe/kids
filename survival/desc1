@@ -14,8 +14,8 @@ Normalize the direction to ensure diagonal movement isn't faster.
 Move one grid cell in the direction of the player.
 Ensure the hazard stays within the grid boundaries.
 Deal 10 damage to the player when colliding with an active hazard.
-Deactivate the hazard after collision.
-Remove the hazard from the list of hazards.
+Deactivate the hazard after collision(after line16).
+Hazard will be removed from the list of hazards(after lines16,and17).
 (purple squares)
    tree branches
 Tree branches (brown squares) that appear at the top of the screen and fall after a short delay.

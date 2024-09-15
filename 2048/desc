@@ -1,0 +1,53 @@
+Project Objective:
+    Develop a classic 2048 game using Pygame
+
+Game Framework:
+    - Pygame
+    - No external images or sounds, or assets
+    - Only implementing the game according to this description
+    - No animations or sound effects
+
+Game Layout:
+    - Game board: 4x4 grid
+    - Tile display: Colored tiles with numbers
+    - Score display: Shows current score
+    - Best score display: Shows best score achieved
+    - Game status: Shows game state (e.g., "In Progress", "Game Over")
+
+Game Rules:
+    1. The game is played on a 4x4 grid
+    2. The game starts with two tiles, each displaying either 2 or 4
+    3. Players can move tiles in four directions: up, down, left, or right
+    4. When moved, tiles slide as far as possible in the chosen direction
+    5. If two tiles with the same number collide, they merge into one tile with the sum of their values
+    6. After each move, a new tile (2 or 4) appears in an empty spot on the board
+    7. The game ends when there are no more possible moves (grid is full and no merges are possible)
+    8. The objective is to create a tile with the number 2048
+
+Game Controls:
+    - Arrow keys to move tiles (up, down, left, right)
+    - Button to restart the game at any time
+
+Game Features:
+    - Implement move validation to ensure only legal moves are allowed
+    - Automatic merging of tiles with the same value
+    - Random generation of new tiles (2 or 4) after each move
+    - Score calculation based on merged tile values
+    - Game over detection when no more moves are possible
+    - Best score tracking across multiple games
+
+User Interface:
+    - Clear, visually appealing board and tile design
+    - Color scheme for different tile values
+    - Display of current score and best score
+    - Game over screen with final score and option to restart
+    - Quit button to exit the game
+
+Additional Features (for future updates):
+    - Undo move functionality
+    - Different board sizes (e.g., 5x5, 6x6)
+    - Animations for tile movements and merges
+    - Sound effects for moves and merges
+    - Time attack mode
+    - Leaderboard for high scores
+

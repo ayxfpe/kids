@@ -117,9 +117,10 @@ class Game:
         self.stat_timer = 0
         self.hazard_move_timer = 0
         self.branch_spawn_timer = 0
+        self.max_resources = 5  # Set the maximum number of resources
 
     def spawn_resource(self):
-        if len(self.resources) < 10 and self.spawn_timer <= 0:
+        if len(self.resources) < self.max_resources and self.spawn_timer <= 0:
             resource_type = random.choices(['food', 'water', 'health'], weights=[0.45, 0.45, 0.1])[0]
             x = random.randint(0, GRID_WIDTH - 1)
             y = random.randint(0, GRID_HEIGHT - 1)
