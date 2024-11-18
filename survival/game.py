@@ -24,6 +24,8 @@ BLUE = (0, 100, 255)
 GRAY = (100, 100, 100)
 PURPLE = (128, 0, 128)
 BROWN = (139, 69, 19)
+YELLOW = (255, 255, 0)
+DARK_GRAY = (50, 50, 50)
 
 class Player:
     def __init__(self):
@@ -32,6 +34,9 @@ class Player:
         self.health = 100
         self.food = 100
         self.water = 100
+        self.ammo = 0
+        self.last_dx = 0
+        self.last_dy = 0
 
     def move(self, dx, dy):
         new_x = self.x + dx
@@ -39,6 +44,9 @@ class Player:
         if 0 <= new_x < GRID_WIDTH and 0 <= new_y < GRID_HEIGHT:
             self.x = new_x
             self.y = new_y
+            if dx != 0 or dy != 0:
+                self.last_dx = dx
+                self.last_dy = dy
 
     def draw(self):
         pygame.draw.rect(screen, RED, (self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE))
@@ -104,6 +112,29 @@ class TreeBranch:
     def draw(self):
         pygame.draw.rect(screen, BROWN, (self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE))
 
+class Gun:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def draw(self):
+        pygame.draw.rect(screen, DARK_GRAY, (self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE))
+
+class Bullet:
+    def __init__(self, x, y, dx, dy):
+        self.x = x
+        self.y = y
+        self.dx = dx
+        self.dy = dy
+
+    def update(self):
+        self.x += self.dx * 2  # Move 2 blocks per update
+        self.y += self.dy * 2
+        return 0 <= self.x < GRID_WIDTH and 0 <= self.y < GRID_HEIGHT
+
+    def draw(self):
+        pygame.draw.rect(screen, YELLOW, (self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE))
+
 class Game:
     def __init__(self):
         self.player = Player()
@@ -118,10 +149,15 @@ class Game:
         self.hazard_move_timer = 0
         self.branch_spawn_timer = 0
         self.max_resources = 5  # Set the maximum number of resources
+        self.guns = []
+        self.bullets = []
+        self.gun_spawn_timer = 0
+        self.gun_spawn_interval = 300  # Spawn a gun every 5 seconds (300 frames)
+        self.shoot_timer = 0
 
     def spawn_resource(self):
         if len(self.resources) < self.max_resources and self.spawn_timer <= 0:
-            resource_type = random.choices(['food', 'water', 'health'], weights=[0.45, 0.45, 0.1])[0]
+            resource_type = random.choices(['food', 'water', 'health'], weights=[0.4, 0.4, 0.2])[0]
             x = random.randint(0, GRID_WIDTH - 1)
             y = random.randint(0, GRID_HEIGHT - 1)
             self.resources.append(Resource(x, y, resource_type))
@@ -140,6 +176,15 @@ class Game:
             x = random.randint(0, GRID_WIDTH - 1)
             self.branches.append(TreeBranch(x, 0))
 
+    def spawn_gun(self):
+        if len(self.guns) < 1 and self.gun_spawn_timer <= 0:
+            x = random.randint(0, GRID_WIDTH - 1)
+            y = random.randint(0, GRID_HEIGHT - 1)
+            self.guns.append(Gun(x, y))
+            self.gun_spawn_timer = self.gun_spawn_interval
+        else:
+            self.gun_spawn_timer -= 1
+
     def draw_grid(self):
         for x in range(0, WIDTH, GRID_SIZE):
             pygame.draw.line(screen, GRAY, (x, 0), (x, HEIGHT))
@@ -150,9 +195,11 @@ class Game:
         health_text = self.font.render(f"Health: {self.player.health}", True, WHITE)
         food_text = self.font.render(f"Food: {self.player.food}", True, WHITE)
         water_text = self.font.render(f"Water: {self.player.water}", True, WHITE)
+        ammo_text = self.font.render(f"Ammo: {self.player.ammo}", True, WHITE)
         screen.blit(health_text, (10, 10))
         screen.blit(food_text, (10, 50))
         screen.blit(water_text, (10, 90))
+        screen.blit(ammo_text, (10, 130))
 
     def run(self):
         running = True
@@ -171,8 +218,15 @@ class Game:
                         self.player.move(0, -1)
                     elif event.key == pygame.K_DOWN:
                         self.player.move(0, 1)
+                    elif event.key == pygame.K_SPACE and self.player.ammo > 0:
+                        if self.shoot_timer <= 0 and (self.player.last_dx != 0 or self.player.last_dy != 0):
+                            self.bullets.append(Bullet(self.player.x, self.player.y, 
+                                                    self.player.last_dx, self.player.last_dy))
+                            self.player.ammo -= 1
+                            self.shoot_timer = 30  # Half second cooldown between shots
 
             self.spawn_resource()
+            self.spawn_gun()
             if random.random() < 0.01:  # 1% chance each frame to spawn a new hazard
                 self.spawn_hazard()
 
@@ -224,6 +278,27 @@ class Game:
                     self.player.health = max(0, self.player.health - 1)
                 self.stat_timer = 0  # Reset the timer
 
+            # Check for collisions with guns
+            for gun in self.guns[:]:
+                if self.player.x == gun.x and self.player.y == gun.y:
+                    self.player.ammo = min(10, self.player.ammo + 10)  # Give 10 ammo, max 10
+                    self.guns.remove(gun)
+
+            # Update bullets and check for collisions
+            for bullet in self.bullets[:]:
+                if not bullet.update():
+                    self.bullets.remove(bullet)
+                else:
+                    for hazard in self.hazards[:]:
+                        if int(bullet.x) == hazard.x and int(bullet.y) == hazard.y and hazard.active:
+                            if random.random() < 0.8:  # 80% chance to hit
+                                self.hazards.remove(hazard)
+                            self.bullets.remove(bullet)
+                            break
+
+            if self.shoot_timer > 0:
+                self.shoot_timer -= 1
+
             # Game over condition
             if self.player.health <= 0:
                 running = False
@@ -238,6 +313,10 @@ class Game:
                     hazard.draw()
             for branch in self.branches:
                 branch.draw()
+            for gun in self.guns:
+                gun.draw()
+            for bullet in self.bullets:
+                bullet.draw()
             self.draw_stats()
             pygame.display.flip()
 
